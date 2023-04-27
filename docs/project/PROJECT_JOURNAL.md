@@ -16,4 +16,12 @@
 
 #### Add SASS and configure webpack to build sass files.
 
-#### Add boostrap framework.
+#### Add boostrap framework.git 
+
+
+23 Apr 2023
+
+```bash
+# Add react router as a project depedency
+npm install react-router-dom
+```
