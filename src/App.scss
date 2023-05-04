@@ -1,2 +1,12 @@
 // Import all of Bootstrap's CSS
 @import "~bootstrap/scss/bootstrap";
+
+
+/* Popup styles */
+$popup-width: 320px;
+$popup-height: 384px;
+
+body {
+  width: $popup-width;
+  height: $popup-height;
+}

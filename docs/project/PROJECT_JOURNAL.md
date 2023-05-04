@@ -25,3 +25,9 @@
 # Add react router as a project depedency
 npm install react-router-dom
 ```
+
+
+
+```Create development build
+npm run build
+```

@@ -4,9 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// Get the current window ID and set the size of the popup
+chrome.windows.getCurrent((currentWindow: any) => chrome.windows.update(currentWindow.id, {width: 400, height: 400}));
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 root.render(
 	<React.StrictMode>
 		<App />
