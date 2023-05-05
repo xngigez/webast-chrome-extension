@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import Error from './pages/Error';
 import Terms from './pages/Terms';
 
+
 // Set up router.
 const router = createHashRouter([
 	{
