@@ -1,6 +1,9 @@
 // Import all of Bootstrap's CSS
 @import "~bootstrap/scss/bootstrap";
 
+// Import bootstrap icons font.
+@import '~bootstrap-icons/font/bootstrap-icons.css';
+
 
 /* Popup styles */
 $popup-width: 320px;
