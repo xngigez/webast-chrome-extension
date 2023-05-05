@@ -1,15 +1,15 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {Form} from 'react-router-dom';
 
 import {Config} from '../config/Config';
 import {IsEmailValid, IsPasswordValid} from '../utils/ValidationUtils';
 import AppToast from '../components/AppToast';
+import {getToken, setToken} from '../services/auth/AuthToken';
 
 const {API_URL} = Config;
 
 export default function Login(): JSX.Element {
 	const [toastMessage, setToastMessage] = useState('');
-
 	/* 
 	 * Email
 	 */
@@ -100,6 +100,7 @@ export default function Login(): JSX.Element {
 
 			console.log(response);
 
+			// TODO: Define type of json as LoginResponse type
 			const json = await response.json();
 
 			if (!response.ok) {
@@ -107,11 +108,13 @@ export default function Login(): JSX.Element {
 			}
 
 			if (json) {
-				// localStorage.setItem("webast-email", email);
-				// localStorage.setItem("webast-token", json.data.token);
+				const token: string = json.data;
 
-				// window.location = "dash.html";
-				console.log(json.data);
+				setToken(token).then(()=>{
+					// TODO: redirect to dash
+				}).catch((error)=>{
+					setToastMessage(error.message);
+				});
 			}
 
 			setIsLogingIn(false);
@@ -128,7 +131,7 @@ export default function Login(): JSX.Element {
 
 	const register = async (emailParam: string, passwordParam: string) => {
 		setIsRegistering(true);
-		
+
 		const requestOptions: any = {
 			method: 'POST',
 			headers: {
