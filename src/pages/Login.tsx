@@ -55,8 +55,6 @@ export default function Login(): JSX.Element {
 	/*
 	 * Form
 	 */
-	const [isLogingIn, setIsLogingIn] = useState<boolean>(false);
-
 	// Update formData
 	const handleFormSubmit = (event: any) => {
 		event.preventDefault();
@@ -69,21 +67,22 @@ export default function Login(): JSX.Element {
 		}
 
 		const buttonName = event.nativeEvent.submitter.name;
-		setIsLogingIn(true);
 
 		if (buttonName === 'loginButton') {
-			// handle login form data
 			login(email, password);
 		} else if (buttonName === 'registerButton') {
-			// handle registration form data
-			console.log('');
+			register(email, password);
 		}
 	};
 
 	/*
 	 * Login
 	 */
+	const [isLogingIn, setIsLogingIn] = useState<boolean>(false);
+
 	const login = async (emailParam: string, passwordParam: string) => {
+		setIsLogingIn(true);
+
 		const requestOptions: any = {
 			method: 'POST',
 			headers: {
@@ -121,6 +120,54 @@ export default function Login(): JSX.Element {
 			setToastMessage(error.message);
 		}
 	};
+
+	/*
+	 * Register
+	 */
+	const [isRegistering, setIsRegistering] = useState<boolean>(false);
+
+	const register = async (emailParam: string, passwordParam: string) => {
+		setIsRegistering(true);
+		
+		const requestOptions: any = {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				email: emailParam,
+				password: passwordParam,
+			}),
+			redirect: 'follow',
+		};
+
+		try {
+			const response = await fetch(`${API_URL}/auth/register`, requestOptions);
+
+			console.log(response);
+
+			const json = await response.json();
+
+			if (!response.ok) {
+				throw new Error(json.message);
+			}
+
+			if (json) {
+				// localStorage.setItem("webast-email", email);
+				// localStorage.setItem("webast-token", json.data.token);
+
+				// window.location = "dash.html";
+				console.log(json.data);
+			}
+
+			setIsRegistering(false);
+		} catch (error: any) {
+			setIsRegistering(false);
+
+			setToastMessage(error.message);
+		}
+	};
+
 
 	return (
 		<>
@@ -171,18 +218,17 @@ export default function Login(): JSX.Element {
 					</div>
 
 					{/* Submit button */}
-
 					<div className="d-grid mb-3">
-						<button type="submit" name="loginButton" className="btn btn-primary btn-lg rounded-pill" disabled={isLogingIn}>
+						<button type="submit" name="loginButton" className="btn btn-primary btn-lg rounded-pill" disabled={isLogingIn || isRegistering}>
 							Login&#160; &#160; &#160;
 							{(isLogingIn) ? <span className="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span> : <i className="bi bi-box-arrow-right"></i>}
 						</button>
 					</div>
 
 					<div className="d-grid mb-3">
-						<button type="submit" name="registerButton" className="btn btn-success btn-lg rounded-pill" disabled={isLogingIn}>
+						<button type="submit" name="registerButton" className="btn btn-success btn-lg rounded-pill" disabled={isRegistering || isLogingIn}>
 							Register&#160;
-							{(isLogingIn) ? <span className="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span> : <i className="bi bi-pencil-square"></i>}
+							{(isRegistering) ? <span className="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span> : <i className="bi bi-pencil-square"></i>}
 						</button>
 					</div>
 
