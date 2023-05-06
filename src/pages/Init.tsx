@@ -13,6 +13,7 @@ export default function Init(props: any): JSX.Element {
 			// Redirect user to dash
 			navigate('/dash');
 		}).catch((error) => {
+			// TODO: Redirect user to login
 			console.error('Error: ', error);
 		});
 	}, []);
