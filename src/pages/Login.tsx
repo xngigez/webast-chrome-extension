@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import {IsEmailValid, IsPasswordValid} from '../utils/ValidationUtils';
 import {getToken, setToken} from '../services/auth/AuthToken';
@@ -8,6 +9,7 @@ import AppToast from '../components/AppToast';
 const {API_URL} = Config;
 
 export default function Login(): JSX.Element {
+	const navigate = useNavigate();
 	const [toastMessage, setToastMessage] = useState('');
 
 	/* 
@@ -111,7 +113,7 @@ export default function Login(): JSX.Element {
 				const token: string = json.data;
 
 				setToken(token).then(()=>{
-					// TODO: redirect to dash
+					navigate('dash');
 				}).catch((error)=>{
 					setToastMessage(error.message);
 				});
