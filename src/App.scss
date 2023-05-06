@@ -12,3 +12,8 @@ body {
   width: $popup-width;
   height: $popup-height;
 }
+
+#root {
+	min-height: 100%;
+	min-width: 100%;
+}
