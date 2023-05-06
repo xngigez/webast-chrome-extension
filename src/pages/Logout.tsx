@@ -1,26 +1,25 @@
+// TODO: Module docs.
 import {useEffect} from 'react';
-import {getToken} from '../services/auth/AuthToken';
 import {useNavigate} from 'react-router-dom';
+import {deleteToken} from '../services/auth/AuthToken';
 
-export default function Init(props: any): JSX.Element {
+
+export default function Logout(): JSX.Element {
 	const navigate = useNavigate();
 
-	// Get token from chrome storage.
 	useEffect(() => {
-		getToken().then((token) => {
-			props.setToken(token);
-
-			// Redirect user to dash
-			navigate('/dash');
-		}).catch((error) => {
-			console.error('Error: ', error);
+		deleteToken().then(() => {
+			console.log('logout successful');
+			navigate('/');
+		}).catch(() => {
+			console.log('logout failed');
 		});
 	}, []);
 
 	return (
 		<>
 			<div className="text-center pt-5">
-				<h1>Loading..</h1>
+				<h1>Logging out..</h1>
 				<br />
 				<div className="spinner-border text-primary" role="status">
 					<span className="visually-hidden">Loading...</span>

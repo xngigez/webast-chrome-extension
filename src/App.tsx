@@ -10,6 +10,7 @@ import Init from './pages/Init';
 import Dash from './pages/Dash';
 import Error from './pages/Error';
 import Terms from './pages/Terms';
+import Logout from './pages/Logout';
 
 function App() {
 	// Token
@@ -28,6 +29,7 @@ function App() {
 						<Route path="/" element={<Init setToken={setToken} />} />
 						<Route path="dash" element={<Dash />} />
 						<Route path="terms" element={<Terms />} />
+						<Route path="logout" element={<Logout />} />
 					</Route>
 					<Route path="*" element={<Error />} />
 				</Routes>

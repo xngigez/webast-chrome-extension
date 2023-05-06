@@ -12,12 +12,14 @@ import {Outlet, Link} from 'react-router-dom';
  * @returns {JSX.Element} The navigation bar element.
  */
 export default function Layout(): JSX.Element {
+	// TODO:
 	return (
 		<>
 			<nav>
 				<ul>
 					<li>
 						<Link to='terms'>Terms</Link>
+						<Link to='logout'>Logout</Link>
 					</li>
 				</ul>
 			</nav>
