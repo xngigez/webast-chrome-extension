@@ -1,15 +1,15 @@
 import {useState, useEffect} from 'react';
-import {Form} from 'react-router-dom';
 
-import {Config} from '../config/Config';
 import {IsEmailValid, IsPasswordValid} from '../utils/ValidationUtils';
-import AppToast from '../components/AppToast';
 import {getToken, setToken} from '../services/auth/AuthToken';
+import {Config} from '../config/Config';
+import AppToast from '../components/AppToast';
 
 const {API_URL} = Config;
 
 export default function Login(): JSX.Element {
 	const [toastMessage, setToastMessage] = useState('');
+
 	/* 
 	 * Email
 	 */
@@ -171,11 +171,10 @@ export default function Login(): JSX.Element {
 		}
 	};
 
-
 	return (
 		<>
 			<div className="container">
-				<Form method='post' onSubmit={handleFormSubmit} noValidate>
+				<form method='post' onSubmit={handleFormSubmit} noValidate>
 					{/* Email */}
 					<div className="mb-3">
 						<label className="form-label" htmlFor="email">Email address*</label>
@@ -236,10 +235,9 @@ export default function Login(): JSX.Element {
 					</div>
 
 					{/* TODO: Add forget option
-						<a href="dash.html">dash</a> */}
-				</Form>
+				<a href="dash.html">dash</a> */}
+				</form>
 			</div>
-
 
 			<AppToast
 				toastMessage={toastMessage} // Just show prop once.
