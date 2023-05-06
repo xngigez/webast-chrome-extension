@@ -7,6 +7,7 @@ import {HashRouter, Routes, Route} from 'react-router-dom';
 
 import Layout from './pages/Layout';
 import Init from './pages/Init';
+import Login from './pages/Login';
 import Dash from './pages/Dash';
 import Error from './pages/Error';
 import Terms from './pages/Terms';
@@ -26,7 +27,8 @@ function App() {
 			<HashRouter >
 				<Routes>
 					<Route path="/" element={<Layout />} >
-						<Route path="/" element={<Init setToken={setToken} />} />
+						<Route index element={<Init setToken={setToken} />} />
+						<Route path="login" element={<Login />} />
 						<Route path="dash" element={<Dash />} />
 						<Route path="terms" element={<Terms />} />
 						<Route path="logout" element={<Logout />} />
