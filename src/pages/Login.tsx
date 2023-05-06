@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 
 import {IsEmailValid, IsPasswordValid} from '../utils/ValidationUtils';
 import {getToken, setToken} from '../services/auth/AuthToken';
@@ -112,9 +112,9 @@ export default function Login(): JSX.Element {
 			if (json) {
 				const token: string = json.data;
 
-				setToken(token).then(()=>{
-					navigate('dash');
-				}).catch((error)=>{
+				setToken(token).then(() => {
+					navigate('/dash');
+				}).catch((error) => {
 					setToastMessage(error.message);
 				});
 			}
