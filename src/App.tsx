@@ -1,43 +1,38 @@
 import './App.css';
 import './App.scss';
 
-import React from 'react';
-import {createHashRouter, RouterProvider} from 'react-router-dom';
+import React, {useEffect} from 'react';
+import {useState} from 'react';
+import {HashRouter, Routes, Route} from 'react-router-dom';
 
 import Layout from './pages/Layout';
-import Login from './pages/Login';
+import Init from './pages/Init';
+import Dash from './pages/Dash';
 import Error from './pages/Error';
 import Terms from './pages/Terms';
 
-
-// Set up router.
-const router = createHashRouter([
-	{
-		// Root router
-		path: '/',
-		element: <Layout />,
-		errorElement: <Error />,
-		children: [
-			// Default route
-			{
-				element: <Login />,
-				index: true
-			},
-			// Child route
-			{
-				path: 'terms',
-				element: <Terms />,
-				index: true
-			}
-		]
-	}
-]);
-
 function App() {
+	// Token
+	const [token, setToken] = useState<string | null>(null);
+
+	useEffect(() => {
+		console.log('Log', token);
+		console.debug('Debug', token);
+	}, [token]);
+
 	return (
 		<React.StrictMode>
-			<RouterProvider router={router} />
-		</React.StrictMode>
+			<HashRouter >
+				<Routes>
+					<Route path="/" element={<Layout />} >
+						<Route path="/" element={<Init setToken={setToken} />} />
+						<Route path="dash" element={<Dash />} />
+						<Route path="terms" element={<Terms />} />
+					</Route>
+					<Route path="*" element={<Error />} />
+				</Routes>
+			</HashRouter >
+		</React.StrictMode >
 	);
 }
 
