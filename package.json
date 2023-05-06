@@ -22,7 +22,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start -r dotenv/config",
+    "start": "react-scripts start",
     "build": "react-scripts build && tsc src/background/background.ts --outDir build && webpack",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
