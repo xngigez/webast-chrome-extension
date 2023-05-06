@@ -8,13 +8,13 @@ export default function Init(props: any): JSX.Element {
 	// Get token from chrome storage.
 	useEffect(() => {
 		getToken().then((token) => {
-			props.setToken(token);
-
-			// Redirect user to dash
-			navigate('/dash');
+			if(token) {
+				navigate('dash');
+			} else {
+				navigate('login');
+			}
 		}).catch((error) => {
-			// TODO: Redirect user to login
-			console.error('Error: ', error);
+			console.log('error', error);
 		});
 	}, []);
 
