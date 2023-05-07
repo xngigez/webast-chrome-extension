@@ -9,9 +9,9 @@ export default function Init(props: any): JSX.Element {
 	useEffect(() => {
 		getToken().then((token) => {
 			if(token) {
-				navigate('dash');
+				navigate('/dash');
 			} else {
-				navigate('login');
+				navigate('/login');
 			}
 		}).catch((error) => {
 			console.log('error', error);

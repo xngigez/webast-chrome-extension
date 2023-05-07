@@ -1,8 +1,8 @@
-import {useState, useEffect} from 'react';
-import {useNavigate } from 'react-router-dom';
+import {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 
 import {IsEmailValid, IsPasswordValid} from '../utils/ValidationUtils';
-import {getToken, setToken} from '../services/auth/AuthToken';
+import {setToken} from '../services/auth/AuthToken';
 import {Config} from '../config/Config';
 import AppToast from '../components/AppToast';
 
