@@ -77,6 +77,7 @@ export default function Login(): JSX.Element {
 		}
 	};
 
+	// TODO: Move these method to services.
 	/*
 	 * Login
 	 */
