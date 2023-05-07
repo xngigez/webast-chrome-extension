@@ -177,6 +177,10 @@ export default function Login(): JSX.Element {
 		<>
 			<div className="container">
 				<form method='post' onSubmit={handleFormSubmit} noValidate>
+					<div className="mb-3">
+						<h1>Login or Register</h1>
+					</div>
+
 					{/* Email */}
 					<div className="mb-3">
 						<label className="form-label" htmlFor="email">Email address*</label>
