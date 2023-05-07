@@ -26,13 +26,15 @@ function App() {
 		<React.StrictMode>
 			<HashRouter >
 				<Routes>
+					<Route path='/' element={<Init setToken={setToken} />} />
+					
 					<Route path="/" element={<Layout />} >
-						<Route index element={<Init setToken={setToken} />} />
-						<Route path="login" element={<Login />} />
 						<Route path="dash" element={<Dash />} />
-						<Route path="terms" element={<Terms />} />
-						<Route path="logout" element={<Logout />} />
 					</Route>
+
+					<Route path="terms" element={<Terms />} />
+					<Route path="logout" element={<Logout />} />
+					<Route path="login" element={<Login />} />
 					<Route path="*" element={<Error />} />
 				</Routes>
 			</HashRouter >
