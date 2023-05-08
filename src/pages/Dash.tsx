@@ -21,9 +21,9 @@ export default function Dash(): JSX.Element {
 	useEffect(() => {
 		console.log('Dash useEffect authToken, authEmail');
 
-		if(authToken !== '') {
-			getAiTokens(authToken, authEmail).then((data: any) => {
-				setAiTokens(data);
+		if(authToken) {
+			getAiTokens(authToken, authEmail).then((tokens: any) => {
+				setAiTokens(tokens);
 			});
 		}
 	}, [authToken]);
