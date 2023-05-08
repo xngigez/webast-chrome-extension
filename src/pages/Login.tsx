@@ -2,9 +2,11 @@ import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 
 import {IsEmailValid, IsPasswordValid} from '../utils/ValidationUtils';
-import {setToken} from '../services/auth/AuthToken';
+import {setToken} from '../services/storage/auth/AuthToken';
 import {Config} from '../config/Config';
 import AppToast from '../components/AppToast';
+
+import { setItem } from '../services/storage/ChromeStorage';
 
 const {API_URL} = Config;
 
@@ -114,6 +116,8 @@ export default function Login(): JSX.Element {
 				const token: string = json.data;
 
 				setToken(token).then(() => {
+					setItem('email', emailParam);
+
 					navigate('/dash');
 				}).catch((error) => {
 					setToastMessage(error.message);

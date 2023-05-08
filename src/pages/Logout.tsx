@@ -1,7 +1,7 @@
 // TODO: Module docs.
 import {useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {deleteToken} from '../services/auth/AuthToken';
+import {deleteToken} from '../services/storage/auth/AuthToken';
 
 
 export default function Logout(): JSX.Element {

@@ -1,15 +1,32 @@
 // TODO: Module docs.
-import {useState} from 'react';
-import {getAiTokens} from '../services/ai/AiTokensService';
+import {useState, useEffect} from 'react';
+import {getAiTokens} from '../services/api/ai/Tokens';
+import {getItem} from '../services/storage/ChromeStorage';
 
 export default function Dash(): JSX.Element {
-	const [authToken, setAuthToken] = useState<string>('sample-token');
+	const [authToken, setAuthToken] = useState<string>('');
+	const [authEmail, setAuthEmail] = useState<string>('');
+
 	const [aiTokens, setAiTokens] = useState<number>(0);
 
 	//*
-	getAiTokens('sample-token').then((data: any) => {
-		setAiTokens(data);
-	});
+	useEffect(() => {
+		getItem('email').then((email) => {
+			setAuthEmail(email);
+		});
+
+		getItem('token').then((token) => {
+			setAuthToken(token);
+		});
+	}, []);
+
+	useEffect(() => {
+		getAiTokens(authToken, authEmail).then((data: any) => {
+			setAiTokens(data);
+		});
+
+		console.log('Dash useEffect authToken, authEmail');
+	}, [authToken, authEmail]);
 
 	return (
 		<>
@@ -18,7 +35,7 @@ export default function Dash(): JSX.Element {
 			<h2>Tokens balance.</h2>
 
 			<p>
-				Tokens: {aiTokens}, <button onClick={() => {getAiTokens(authToken);}}>refresh</button>
+				Tokens: {aiTokens}, <button onClick={() => {getAiTokens(authToken, authEmail);}}>refresh</button>
 			</p>
 		</>
 	);

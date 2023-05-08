@@ -1,8 +1,8 @@
 // TODO: Module docs.
-import { Config } from '../../config/Config';
+import { Config } from '../../../config/Config';
 
 
-export const getAiTokens = async (token: string): Promise<number> => {
+export const getAiTokens = async (token: string, email: string): Promise<number> => {
 	// Get token from server.
 	const requestOptions: any = {
 		method: 'GET',
@@ -13,8 +13,11 @@ export const getAiTokens = async (token: string): Promise<number> => {
 		redirect: 'follow',
 	};
 
+	console.log('getAiTokens, email: ', email);
+
 	try {
-		const response = await fetch(`${Config.API_URL}/tokens/user?email=johndoe@mail.com`, requestOptions);
+		//TODO: Change to use token.
+		const response = await fetch(`${Config.API_URL}/tokens/user?email=${email}`, requestOptions);
 		const json = await response.json();
 
 		if (!response.ok) {

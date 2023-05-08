@@ -1,5 +1,6 @@
+// TODO: Add module docs.
 import {useEffect} from 'react';
-import {getToken} from '../services/auth/AuthToken';
+import {getToken} from '../services/storage/auth/AuthToken';
 import {useNavigate} from 'react-router-dom';
 
 export default function Init(props: any): JSX.Element {
