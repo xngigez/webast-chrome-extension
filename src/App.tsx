@@ -16,6 +16,7 @@ import Logout from './pages/Logout';
 function App() {
 	// Token
 	const [token, setToken] = useState<string | null>(null);
+	const [email, setEmail] = useState<string | null>(null);
 
 	useEffect(() => {
 		console.log('Log', token);
@@ -26,11 +27,15 @@ function App() {
 		<React.StrictMode>
 			<HashRouter >
 				<Routes>
-					<Route path='/' element={<Init setToken={setToken} />} />
+					<Route path='/' element={<Init setToken={setToken} setEmail={setEmail}/>} />
 					
 					<Route path="/" element={<Layout />} >
+						{/* TODO: prevent access if not logged in */}
 						<Route path="dash" element={<Dash />} />
 					</Route>
+
+					<Route path="checkout" element={<Checkout token={token} email={email}/>} />
+					<Route path="logout" element={<Logout />} />
 
 					<Route path="terms" element={<Terms />} />
 					<Route path="logout" element={<Logout />} />

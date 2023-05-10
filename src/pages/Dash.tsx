@@ -38,6 +38,19 @@ export default function Dash(): JSX.Element {
 				{/* TODO: Add loader for fetching ai tokens */}
 				Tokens: {aiTokens}, <button onClick={() => {getAiTokens(authToken, authEmail);}}>refresh</button>
 			</p>
+
+			<h2>Available Subscriptions.</h2>
+			<ul>
+				{subscriptions.map((subscription) => (
+					<li key={subscription.price}>
+						${subscription.description}
+
+						<br />
+
+						<Link to='/checkout' state={{ subscription:subscription }} className="btn btn-primary">buy ${subscription.price}/-</Link>
+					</li>
+				))}
+			</ul>
 		</>
 	);
 }

@@ -1,21 +1,29 @@
 // TODO: Add module docs.
 import {useEffect} from 'react';
-import {getToken} from '../services/storage/auth/AuthToken';
 import {useNavigate} from 'react-router-dom';
+
+import {getToken} from '../services/storage/auth/AuthToken';
+import {getItem} from '../services/storage/ChromeStorage';
+
 
 export default function Init(props: any): JSX.Element {
 	const navigate = useNavigate();
 
-	// Get token from chrome storage.
 	useEffect(() => {
-		getToken().then((token) => {
-			if(token) {
-				navigate('/dash');
-			} else {
-				navigate('/login');
+		getItem('email').then((email) => {
+			if(email) {
+				props.setEmail(email);
+
+				getItem('token').then((token) => {
+					if(token) {
+						props.setToken(token);
+		
+						navigate('/dash');
+					}
+				});
 			}
-		}).catch((error) => {
-			console.log('error', error);
+
+			navigate('/login');
 		});
 	}, []);
 
