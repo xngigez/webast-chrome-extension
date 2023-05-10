@@ -12,6 +12,7 @@ import Dash from './pages/Dash';
 import Error from './pages/Error';
 import Terms from './pages/Terms';
 import Logout from './pages/Logout';
+import Checkout from './pages/Checkout';
 
 function App() {
 	// Token

@@ -1,6 +1,5 @@
 // TODO: Add modules docs.
 import {useLocation} from 'react-router';
-import {IsEmailValid} from '../utils/ValidationUtils';
 import {Config} from '../config/Config';
 
 
