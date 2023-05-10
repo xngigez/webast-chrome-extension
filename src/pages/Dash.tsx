@@ -43,30 +43,53 @@ export default function Dash(): JSX.Element {
 
 	return (
 		<>
-			<h1>Account.</h1>
+			<div className="container">
+				<div className="card">
+					<div className="card-header">
+						Account.
+					</div>
+					<div className="card-body">
+						<p className="card-text">Email: {authEmail}</p>
+					</div>
+				</div>
 
-			<p>
-				Email: {authEmail}
-			</p>
+				<br/>
 
-			<h2>Tokens balance.</h2>
-			<p>
-				{/* TODO: Add loader for fetching ai tokens */}
-				Tokens: {aiTokens}, <button onClick={() => {getAiTokens(authToken, authEmail);}}>refresh</button>
-			</p>
+				<div className="card">
+					<div className="card-header">
+						Tokens.
+					</div>
+					<div className="card-body">
+						<p className="card-text">
+							{/* TODO: Add loader for fetching ai tokens */}
+							Tokens: {aiTokens}, <button onClick={() => {getAiTokens(authToken, authEmail);}}>refresh</button>
+						</p>
+					</div>
+				</div>
 
-			<h2>Available Subscriptions.</h2>
-			<p>
-				{subscriptions.map((subscription) => (
-					<li key={subscription.price}>
-						${subscription.description}
+				<br/>
 
-						<br />
+				<div className="card">
+					<div className="card-header">
+						Subscriptions.
+					</div>
+					<div className="card-body">
+						<p className="card-text">
+							{subscriptions.map((subscription) => (
+								<li key={subscription.price}>
+									${subscription.description}
 
-						<Link to='/checkout' state={{ subscription:subscription }} className="btn btn-primary">buy ${subscription.price}/-</Link>
-					</li>
-				))}
-			</p>
+									<br />
+
+									<Link to='/checkout' state={{subscription: subscription}} className="btn btn-primary">buy ${subscription.price}/-</Link>
+								</li>
+							))}
+						</p>
+					</div>
+				</div>
+
+				<br/>
+			</div >
 		</>
 	);
 }

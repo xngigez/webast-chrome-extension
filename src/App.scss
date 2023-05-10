@@ -7,10 +7,14 @@
 /* Popup styles */
 $popup-width: 320px;
 $popup-height: 384px;
+$popup-max-height: 400px;
 
 body {
-  width: $popup-width;
-  height: $popup-height;
+	height: $popup-height;
+	max-width: $popup-width;
+	max-height: $popup-max-height;
+	width: $popup-width;
+	overflow: auto;
 }
 
 #root {

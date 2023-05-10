@@ -13,9 +13,6 @@ export default function Checkout(props: any): JSX.Element {
 	};
 
 	window.open(`${Config.API_URL}/subscriptions/user?data=${encodeURIComponent(JSON.stringify(data))}`, '_blank');
-	// window.open(`${Config.API_URL}/subscriptions/user?data=${encodeURIComponent(JSON.stringify({data: { token: props.token, email: props.email, subscription: subscription}}))}`, '_blank');
-
-	// chrome.runtime.sendMessage({action: 'openPaymentPage', data: {token: props.token, email: props.email, subscription: subscription}});
 
 	return (
 		<>
@@ -23,4 +20,3 @@ export default function Checkout(props: any): JSX.Element {
 		</>
 	);
 }
-
