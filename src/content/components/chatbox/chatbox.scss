@@ -1,0 +1,83 @@
+$chatbox-bg-color: rgba(243, 243, 243, 0.75);
+$chatbox-blur: 5px;
+$chatbox-height: 384px;
+$chatbox-offset: 16px;
+$chatbox-radius: 16px;
+$chatbox-width: 520px;
+
+$title-bar-height: 32px;
+$handle-bar-height: 4px;
+
+$icon-width: 24px;
+
+.chatbox {
+	background-color: rgba(243, 243, 243, 0.5);
+	bottom: $chatbox-offset;
+	box-shadow: 1px 1px $chatbox-blur $chatbox-bg-color;
+	height: $chatbox-height;
+	overflow: hidden;
+	position: fixed;
+	right: $chatbox-offset;
+	width: $chatbox-width;
+	backdrop-filter: blur($chatbox-blur) saturate(150%) brightness(120%) contrast(90%);
+	z-index: 9999;
+
+	.title-bar {
+		align-items: center;
+		background-color: rgba(235, 235, 235, 0.75);
+		display: flex;
+		height: $title-bar-height;
+		justify-content: space-between;
+		padding: 0 12px;
+
+		.handle {
+			cursor: move;
+			height: 100%;
+			width: 100%;
+
+			.handle-bar {
+				background-color: #B6B6B6;
+				border-radius: 2px;
+				height: 4px;
+				margin: ($title-bar-height - $handle-bar-height)/2 auto;
+				transform: translateX(($icon-width * 3)/2);
+				width: 48px;
+			}
+		}
+
+		.icons {
+			align-items: center;
+			display: flex;
+
+			.icon {
+				background-color: transparent;
+				border-radius: 50%;
+				cursor: pointer;
+				display: flex;
+				height: 24px;
+				justify-content: center;
+				margin: 0 4px;
+				width: 24px;
+
+				&:hover {
+					background-color: rgba(0, 0, 0, 0.1);
+				}
+			}
+
+			.maximize {
+				background-color: #1C9BF6;
+			}
+
+			.minimize {
+				background-color: #F7B500;
+			}
+
+			.close {
+				background-color: #F14E4E;
+			}
+		}
+	}
+
+	border-radius: $chatbox-radius;
+	position: fixed;
+}
