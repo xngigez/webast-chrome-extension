@@ -31,6 +31,17 @@ module.exports = {
 				],
 				exclude: /node_modules/,
 			},
+			{
+				test: /\.svg$/,
+				use: [
+					{
+						loader: 'svg-url-loader',
+						options: {
+							// specify options for the loader here
+						},
+					},
+				],
+			},
 		],
 	},
 	resolve: {
