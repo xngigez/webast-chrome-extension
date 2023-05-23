@@ -4,6 +4,9 @@ import './chatbox.scss';
 
 import {CloseIcon, ChatIcon, MenuIcon, AddIcon} from './assests/Icons';
 
+import SearchBar from './searchbox/SearchBar';
+import ListItem from './listitem/ListItem';
+
 function Chatbox() {
 	const chatboxRef: React.RefObject<HTMLDivElement> = useRef(null);
 	const [chatboxPosition, setChatboxPosition] = useState<{left: number | null; top: number | null}>({left: null, top: null});
@@ -128,7 +131,9 @@ function Chatbox() {
 
 			<div className="content">
 				<div className={`menu-box ${isMenuOpen ? 'menu-box-show':''}`}>
-					menu items here.
+					<SearchBar/>
+
+					<ListItem title='example title' date='12 may'/>
 				</div>
 				Content here.
 			</div>

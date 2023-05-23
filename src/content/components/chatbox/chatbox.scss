@@ -195,12 +195,13 @@ $menu-box-width: 277px;
 		position: relative;
 
 		.menu-box {
+			background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(227, 242, 253, .85));
 			display: none;
-			background-color: red;
+			height: inherit;
+			padding-right: 16px;
 			position: absolute;
 			width: $menu-box-width;
 			z-index: 99999;
-			height: inherit;
 		}
 
 		.menu-box-show {
