@@ -7,6 +7,7 @@ import {CloseIcon, ChatIcon, MenuIcon, AddIcon} from './assests/Icons';
 import SearchBar from './searchbox/SearchBar';
 import ListItem from './listitem/ListItem';
 import Button from './components/buttons/Button';
+import ChatInput from './components/chatinput/ChatInput';
 
 function Chatbox() {
 	const chatboxRef: React.RefObject<HTMLDivElement> = useRef(null);
@@ -139,6 +140,8 @@ function Chatbox() {
 					<Button text='New conversation' icon={<AddIcon/>}/>
 				</div>
 				Content here.
+
+				<ChatInput/>
 			</div>
 
 			<div
