@@ -1,0 +1,36 @@
+.list-item {
+	display: flex;
+    /* align-items: center; */
+    justify-content: space-between;
+    margin-bottom: 10px;
+    flex-direction: column;
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+}
+
+.title {
+    font-weight: bold;
+    margin-right: 10px;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.date {
+    margin-right: 10px;
+    font-size: 10px;
+}
+
+.icons {
+	display: flex;
+}
+
+.icon {
+	margin-left: 10px;
+	cursor: pointer;
+}
