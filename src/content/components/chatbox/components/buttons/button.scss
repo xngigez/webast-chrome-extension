@@ -1,0 +1,45 @@
+
+@import '../../styles/variables.scss';
+
+
+.button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 32px;
+	width: 90%;
+	max-width: 100%;
+	padding: 0 12px;
+	border-radius: 16px;
+	background-color: $theme-light-color-accent;
+	color: #fff;
+	font-size: 14px;
+	font-weight: bold;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	cursor: pointer;
+	border: none;
+	outline: none;
+
+	.button-icon {
+		margin-right: 8px;
+
+		svg {
+			stroke: #fff;
+		}
+	}
+
+	.button-text {
+		margin-right: 8px;
+	}
+
+	&:hover {
+		background-color: #fff;
+		color: $theme-light-color-accent;
+
+		svg {
+			stroke: $theme-light-color-accent;
+		}
+	}
+}

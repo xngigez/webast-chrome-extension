@@ -1,11 +1,12 @@
 // TODO: Add docs.
 import {useEffect, useRef, useState} from 'react';
-import './chatbox.scss';
+import './styles/chatbox.scss';
 
 import {CloseIcon, ChatIcon, MenuIcon, AddIcon} from './assests/Icons';
 
 import SearchBar from './searchbox/SearchBar';
 import ListItem from './listitem/ListItem';
+import Button from './components/buttons/Button';
 
 function Chatbox() {
 	const chatboxRef: React.RefObject<HTMLDivElement> = useRef(null);
@@ -134,6 +135,8 @@ function Chatbox() {
 					<SearchBar/>
 
 					<ListItem title='example title' date='12 may'/>
+
+					<Button text='New conversation' icon={<AddIcon/>}/>
 				</div>
 				Content here.
 			</div>
