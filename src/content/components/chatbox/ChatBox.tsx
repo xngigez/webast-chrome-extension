@@ -83,6 +83,16 @@ function Chatbox() {
 		}
 	}, [isChatboxMinimized]);
 
+
+	/*
+	 *	AI functions.
+	 */
+	const sendMessage = (message: string): string => {
+		console.log(message);
+
+		return '';
+	};
+
 	return (
 		<div
 			className={`chatbox${isChatboxMinimized ? ' minimized' : ''}`}
@@ -132,16 +142,16 @@ function Chatbox() {
 			</div>
 
 			<div className="content">
-				<div className={`menu-box ${isMenuOpen ? 'menu-box-show':''}`}>
-					<SearchBar/>
+				<div className={`menu-box ${isMenuOpen ? 'menu-box-show' : ''}`}>
+					<SearchBar />
 
-					<ListItem title='example title' date='12 may'/>
+					<ListItem title='example title' date='12 may' />
 
-					<Button text='New conversation' icon={<AddIcon/>}/>
+					<Button text='New conversation' icon={<AddIcon />} />
 				</div>
 				Content here.
 
-				<ChatInput/>
+				<ChatInput onSend={sendMessage} />
 			</div>
 
 			<div
