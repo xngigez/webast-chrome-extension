@@ -194,6 +194,8 @@ $menu-box-width: 277px;
 	.content {
 		height: 100%;
 		overflow: hidden;
+		overflow-y: scroll;
+		padding-bottom: 96px;
 		position: relative;
 
 		.menu-box {
@@ -246,6 +248,26 @@ $menu-box-width: 277px;
 			}
 		}
 	}
+
+	/*
+	 * Scrollbar
+	 */
+	/* Define the scroll bar styles */
+	::-webkit-scrollbar {
+		width: 4px;
+		height: 64px;
+	}
+
+	/* Track styles (optional) */
+	::-webkit-scrollbar-track {
+		background-color: #b6b6b600;
+	}
+
+	/* Thumb styles */
+	::-webkit-scrollbar-thumb {
+		background-color: #B6B6B6;
+		border-radius: 2px;
+	}
 }
 
 /*
@@ -261,7 +283,7 @@ $menu-box-width: 277px;
 .fixed-bottom-center {
 	bottom: $padding;
 	left: 50%;
-	position: absolute;
+	position: fixed;
 	text-align: center;
 	transform: translateX(-50%);
 }

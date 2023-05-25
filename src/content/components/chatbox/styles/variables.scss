@@ -3,10 +3,18 @@
  * Colors
  */
 $theme-light-color-accent: #1C9BF6;
+
+// Font
 $theme-light-font-color: #000;
+
+// Foreground colors
+$theme-light-foreground-color: #FFF;
+$theme-light-foreground-color-alternative: #E1F5FE;
 
 
 /*
  * Spacing
  */
+$border-radius: 16px;
 $padding: 16px;
+$margin: 8px;

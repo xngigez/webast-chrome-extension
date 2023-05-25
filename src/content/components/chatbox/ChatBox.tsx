@@ -11,6 +11,8 @@ import ChatInput from './components/chatinput/ChatInput';
 import {getAIMessage} from '../../../services/api/ai/AIConversations';
 
 import {getItem} from '../../../services/storage/ChromeStorage';
+import ChatBubbleSender from './components/chat-bubbles/ChatBubbleSender';
+import ChatBubbleResponse from './components/chat-bubbles/ChatBubbleResponse';
 
 
 function Chatbox() {
@@ -100,7 +102,7 @@ function Chatbox() {
 	}, []);
 
 	useEffect(() => {
-		if(isGettingAiResponse) {
+		if (isGettingAiResponse) {
 			setIsGettingAiResponse(false);
 
 			console.log('conversation: ', conversation);
@@ -176,12 +178,12 @@ function Chatbox() {
 
 				{conversation.map((message, index) => (
 					<div key={index}>
-						{message.content}
+						{(message.role === 'user') ? <ChatBubbleSender message={message} /> : <ChatBubbleResponse message={message} />}
 					</div>
 				))}
-
-				<ChatInput sendMessage={sendMessage} />
 			</div>
+
+			<ChatInput sendMessage={sendMessage} />
 
 			<div
 				className="minimized-chatbox-icon"

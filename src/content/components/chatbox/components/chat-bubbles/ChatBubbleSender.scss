@@ -1,0 +1,18 @@
+
+@import '../../styles/variables.scss';
+
+.chat-bubble-sender {
+	background-color: $theme-light-foreground-color;
+	border-radius: $border-radius $border-radius 0;
+	margin: $margin 0;
+	padding: $padding;
+	text-align: right;
+
+	.icon {
+		text-align: right;
+
+		svg {
+			stroke: $theme-light-font-color;
+		}
+	}
+}
