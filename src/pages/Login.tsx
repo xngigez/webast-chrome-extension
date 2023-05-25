@@ -20,7 +20,7 @@ export default function Login(): JSX.Element {
 	const [email, setEmail] = useState<string>('');
 	const [emailError, setEmailError] = useState<string>('');
 
-	const emailInputChange = (event: any) => {
+	const emailInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setEmail(event.target.value);
 	};
 
@@ -38,7 +38,7 @@ export default function Login(): JSX.Element {
 	const [password, setPassword] = useState('');
 	const [passwordError, setPasswordError] = useState('');
 
-	const passwordInputChange = (event: any) => {
+	const passwordInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setPassword(event.target.value);
 	};
 
