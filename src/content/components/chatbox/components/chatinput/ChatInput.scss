@@ -1,0 +1,43 @@
+
+@import '../../styles/variables.scss';
+
+.chat-input {
+	height: 80px;
+	width: 100%;
+	border-radius: $padding $padding 0 $padding;
+	box-sizing: border-box;
+	background-color: #fff;
+	display: flex;
+	align-items: center;
+	padding: $padding;
+
+	.textarea {
+		flex: 1;
+		border: none;
+		background-color: transparent;
+		height: 100%;
+		outline: none;
+		resize: none;
+	}
+
+	.icons {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		margin-left: 8px;
+
+		.icon {
+			width: 24px;
+			height: 24px;
+			cursor: pointer;
+
+			&:first-child {
+				margin-bottom: 4px;
+			}
+
+			svg {
+				stroke: $theme-light-color-accent;
+			}
+		}
+	}
+}
