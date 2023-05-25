@@ -16,7 +16,7 @@ export const getAIMessage = async (email: string, conversation:message[]) => {
 			// TODO: 'Authorization': `Bearer ${token}`
 		},
 		body: JSON.stringify({
-			'messages': conversation,
+			'messages': JSON.stringify(conversation),
 			'email': email
 		}),
 		redirect: 'follow',
