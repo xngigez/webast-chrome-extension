@@ -8,8 +8,17 @@ import SearchBar from './searchbox/SearchBar';
 import ListItem from './listitem/ListItem';
 import Button from './components/buttons/Button';
 import ChatInput from './components/chatinput/ChatInput';
+import {getAIMessage} from '../../../services/api/ai/AIConversations';
+
+import {getItem} from '../../../services/storage/ChromeStorage';
+
 
 function Chatbox() {
+	const [email, setEmail] = useState<string>('');
+
+	const [conversation, setConversation] = useState<message[]>([]);
+	const [isGettingAiResponse, setIsGettingAiResponse] = useState<boolean>(false);
+
 	const chatboxRef: React.RefObject<HTMLDivElement> = useRef(null);
 	const [chatboxPosition, setChatboxPosition] = useState<{left: number | null; top: number | null}>({left: null, top: null});
 	const [chatboxOffset, setChatboxOffset] = useState<{x: number; y: number}>({x: 0, y: 0});
@@ -84,13 +93,28 @@ function Chatbox() {
 	}, [isChatboxMinimized]);
 
 
-	/*
-	 *	AI functions.
-	 */
-	const sendMessage = (message: string): string => {
-		console.log(message);
+	useEffect(() => {
+		getItem('email').then((email: string) => {
+			setEmail(email);
+		});
+	}, []);
 
-		return '';
+	useEffect(() => {
+		if(isGettingAiResponse) {
+			setIsGettingAiResponse(false);
+
+			console.log('conversation: ', conversation);
+
+			getAIMessage(email, conversation).then((aiMessage) => {
+				setConversation([...conversation, aiMessage]);
+			});
+		}
+	}, [conversation]);
+
+	const sendMessage = (message: message): void => {
+		setIsGettingAiResponse(true);
+
+		setConversation([...conversation, message]);
 	};
 
 	return (
@@ -149,9 +173,14 @@ function Chatbox() {
 
 					<Button text='New conversation' icon={<AddIcon />} />
 				</div>
-				Content here.
 
-				<ChatInput onSend={sendMessage} />
+				{conversation.map((message, index) => (
+					<div key={index}>
+						{message.content}
+					</div>
+				))}
+
+				<ChatInput sendMessage={sendMessage} />
 			</div>
 
 			<div
